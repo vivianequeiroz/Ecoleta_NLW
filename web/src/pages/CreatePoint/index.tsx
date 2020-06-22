@@ -1,6 +1,6 @@
 import React, { useEffect, useState, ChangeEvent, FormEvent } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { FiArrowLeft } from 'react-icons/fi';
+import { FiArrowLeft, FiCheckCircle } from 'react-icons/fi';
 import './styles.css';
 import logo from '../../assets/Logo.svg';
 import { Map, TileLayer, Marker } from 'react-leaflet';  
@@ -43,6 +43,11 @@ const CreatePoint = () => {
 
     const [selectedItems, setSelectedItems] = useState<number[]>([]);
     const history = useHistory(); 
+
+    /*estado overlay*/
+
+    const [overlay, setOverlay] = useState(false)
+
 
 
 
@@ -150,11 +155,15 @@ const CreatePoint = () => {
 
         await api.post('points', data);
 
-        alert('Ponto de coleta criado!');
+        setOverlay(true);
 
-        history.push('/'); 
+        setTimeout(
+            function(){
+                setOverlay(false);
+                history.push('/'); 
+            }, 4500);
     }
-    
+
 
 
 
@@ -296,6 +305,13 @@ const CreatePoint = () => {
             </button>
 
             </form>
+
+        <div id="overlay" style={{display: overlay ? 'block' : 'none' }}>
+            <div id="text">
+            <span><FiCheckCircle size={50} color='#34cb79'/></span>
+               <br/>Cadastro concluído!
+            </div>
+      </div>
 
         </div>
         
