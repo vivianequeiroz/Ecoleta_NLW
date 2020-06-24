@@ -1,6 +1,6 @@
 <meta charset="utf-8">
 <h1 align="center">
-    <img alt="Logo Ecoleta" title="#Ecoleta" src=".github/logo.svg" width="250px" />
+    <img alt="Logo Ecoleta" title="#Ecoleta" src=".github/Logo.svg" width="250px" />
 </h1>
 
 <h4 align="center">
